@@ -45,4 +45,7 @@ if(preg_match('/^http(s){0,1}\:\/\/[w+]{3}\.[a-zA-Z]{3,}\.[a-zA-Z]{2,}$/',$str5)
 }
 else echo "don't match";
 
+
+$c = preg_match('/^http(s){0,1}\:\/\/[w+]{3}\.[a-zA-Z]{3,}\.[a-zA-Z]{2,}$/',$str5,$match);
+print_r($match);
 ?>
