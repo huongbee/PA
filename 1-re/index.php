@@ -95,10 +95,16 @@ function FirstToUpper($str){
   return strtoupper($str[0]);
 }
 
+// $str = "khoa pham training";
+// $newStr = preg_replace_callback('/\b\w/',"FirstToUpper",$str);
+// // \b: biên giới của 1 từ hoặc là bắt đầu 1 từ 
+// echo $newStr;
+
+
+function StartToUpper($str){
+  return strtoupper($str[0]);
+}
 $str = "khoa pham training";
-$newStr = preg_replace_callback('/\b\w/',"FirstToUpper",$str);
-// \b: biên giới của 1 từ hoặc là bắt đầu 1 từ 
-
+$newStr = preg_replace_callback('/^\b\w/',"StartToUpper",$str);
 echo $newStr;
-
 ?>
