@@ -81,8 +81,24 @@ $str = '<form>
 // print_r($match); 
 
 
-$str = "Tháng 7 có 31 ngày, tháng 8 có 31 ngày,tháng 11 có 31 ngày. ";
-$newStr = preg_replace('/31/',"30",$str,1,$count);
+// $str = "Tháng 7 có 31 ngày, tháng 8 có 31 ngày,tháng 11 có 31 ngày. ";
+// $newStr = preg_replace('/31/',"30",$str,1,$count);
+// echo $newStr;
+// echo $count; //số từ bị thay thế
+
+
+// $str = "Tháng 7 có 31 ngày, tháng 8 có 31 ngày,tháng 11 có 31 ngày. ";
+// $newStr = preg_replace('/\d{2}/',"30",$str);
+// echo $newStr;
+
+function FirstToUpper($str){
+  return strtoupper($str[0]);
+}
+
+$str = "khoa pham training";
+$newStr = preg_replace_callback('/\b\w/',"FirstToUpper",$str);
+// \b: biên giới của 1 từ hoặc là bắt đầu 1 từ 
+
 echo $newStr;
-echo $count; //số từ bị thay thế
+
 ?>
