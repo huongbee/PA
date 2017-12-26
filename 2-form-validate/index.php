@@ -20,14 +20,26 @@
 
 <body>
     <!-- 
-Fullname: ít nhất 10 kí tự [a-z\s]{10}
-email: đúng định dạng [a-z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,4}
-url đúng định dạng ^(https?:\/\/)?\w+
-phone: không chưa text, được phép + -, 10-12 kí tư: [\d-+\(\)]{10,20}
+Fullname: ít nhất 10 kí tự 
+    [a-z\s]{10}
+
+email: đúng định dạng 
+    [a-z0-9._+-]+@[a-z0-9.-]+\.[a-z]{2,4}
+
+url đúng định dạng 
+    ^(https?:\/\/)?\w+
+
+phone: không chưa text, được phép + -, 10-12 kí tư: 
+    [\d-+\(\)]{10,20}
+
 age: số
-date time: đúng định dạng dd/mm/yyyy hh:ii:ss  ^([0-3]{2})-([0-3]{2})-(\d{4})\s([0-6]{2}):([0-6]{2}):([0-6]{2})$
-date: đúng định dạng dd/mm/yyyy ^([0-3]{2})-([0-3]{2})-(\d{4})$
-password: có chưa hoa,thường, số, kí từ đăc biệt, ít nhất 6: pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$"
+date time: đúng định dạng dd/mm/yyyy hh:ii:ss  
+    ^([0-3]{2})-([0-3]{2})-(\d{4})\s([0-6]{2}):([0-6]{2}):([0-6]{2})$
+
+date: đúng định dạng dd/mm/yyyy 
+    ^([0-3]{2})-([0-3]{2})-(\d{4})$
+password: có chưa hoa,thường, số, kí từ đăc biệt, ít nhất 6: 
+    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$"
 
 
 (?=pattern), (?:pattern) and (?!pattern)
@@ -105,14 +117,15 @@ password: có chưa hoa,thường, số, kí từ đăc biệt, ít nhất 6: pa
                 <div class="form-group row">
                     <label for="example-password-input" class="col-2 col-form-label">Password</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" name="password" placeholder="hunter2" id="example-password-input" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$"
+                        <input class="form-control" type="text" name="password" placeholder="hunter2" id="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$"
                             value="<?=@$_POST['password']?>" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-password-input" class="col-2 col-form-label">Password</label>
                     <div class="col-10">
-                        <input class="form-control" type="password" placeholder="hunter2" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$" id="example-confirm-password-input">
+                        <input class="form-control" type="password" placeholder="hunter2" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$" id="confirm_password">
+                        <span id='message'></span>
                     </div>
                 </div>
                 <input class="btn btn-warning" type="submit" placeholder="Signup">
@@ -120,13 +133,26 @@ password: có chưa hoa,thường, số, kí từ đăc biệt, ít nhất 6: pa
         </div>
     </div>
     <script>
+        var password = document.getElementById("password"),
+            confirm_password = document.getElementById("confirm_password");
+        //console.log(password)
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword
+
         function checkInput(id, message) {
             input = document.getElementById(id);
             input.oninvalid = function (event) {
                 event.target.setCustomValidity(message);
             }
         }
-        checkInput('example-password-input', 'Vui lòng nhập password đúng định dạng')
+        checkInput('password', 'Vui lòng nhập password đúng định dạng')
         checkInput('email', 'Email phải sử dụng @ và . ')
         checkInput('title', 'Vui lòng nhập tiêu đề')
         checkInput('message', 'Vui lòng nhập nội dung.')
