@@ -1,0 +1,62 @@
+<?php
+$title = "Danh sách món ăn";
+$this->headTitle($title);
+?>
+<div class="container">
+    <h1><?=$this->escapeHtml($title)?> </h1><a href="<?=$this->url('foods',['controller'=>'FoodsController','action'=>'add'])?>"><button class="btn btn-primary">Thêm mới</button></a>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+        <?= $this->flashMessenger()->render('success', ['alert', 'alert-success']); ?>
+        </div>
+        
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên món</th>
+                <th>Tên loại</th>
+                <th style="width:30%">Mô tả ngắn</th>
+                <th>Đơn giá</th>
+                <th>Khuyến mãi</th>
+                <th>Hình ảnh</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php 
+        $stt = 1;
+        foreach($foods as $food):
+        ?>
+            <tr>
+                <td><?=$stt?></td>
+                <td><?=$this->escapeHtml($food->name)?></td>
+                <td><?=$this->escapeHtml($food->name_type)?></td>
+                <td style="width:30%"><?=$this->escapeHtml($food->summary)?></td>
+                <td><?=$this->escapeHtml($food->price)?></td>
+                <td><?=$this->escapeHtml($food->promotion)?></td>
+                <td>
+                <img src="img/hinh_mon_an/<?=$this->escapeHtml($food->image)?>" alt="<?=$this->escapeHtml($food->name)?>" width="120px">
+                </td>
+                <td>
+                    <a href="<?=$this->url('foods',
+                                            [
+                                                'controller'=>'FoodsController',
+                                                'action'=>'edit',
+                                                'id'=>$food->id
+                                            ])?>">Edit</a>
+                    <a href="<?=$this->url('foods',
+                                            [
+                                                'controller'=>'FoodsController',
+                                                'action'=>'delete',
+                                                'id'=>$food->id
+                                            ])?>">Delete</a>
+                </td>
+            </tr>
+        <?php 
+        $stt++;
+        endforeach ?>
+        </tbody>
+    </table>
+</div>
+
