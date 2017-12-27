@@ -17,7 +17,30 @@ class Student{
             $this->name = $name;
         }
     }
+    
+    public static $id = 789;
+
+    public function getId(){
+        //return Student::$id; //or
+        return self::$id;
+    }
+
+
 }
+/**
+ * self vs $this
+ * self:
+ *  - current class
+ *  - access static members
+ *  - call with $
+ * $this
+ *  - current obj
+ *  - access non static members
+ *  - call without $
+ * 
+ */
+
+
 
 $hs = new Student;
 $hs->setAge(9);
@@ -27,4 +50,7 @@ echo "<br>";
 echo $hs::AGE;
 echo "<br>";
 echo Student::AGE;
+
+echo '<br>';
+echo $hs->getId();
 ?>
