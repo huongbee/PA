@@ -27,7 +27,7 @@ class BookManager{
         $this->book = $book;
     }
 
-    public function getName(){
+    public function getBook(){
         switch($this->book){
             case (BookManager::COOKINGBOOK):
                 return new CookingBook;
@@ -40,7 +40,7 @@ class BookManager{
 }
 
 $book = new BookManager('science');
-$scienceBook = $book->getName();
+$scienceBook = $book->getBook();
 print_r($scienceBook);
 
 
