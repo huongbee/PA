@@ -4,7 +4,7 @@ class Student{
     public $name;
     public $age;
 
-    const AGE = 18;
+    protected const AGE = 18;
 
     function setAge($age){
         return [self::AGE => $age];
@@ -24,9 +24,15 @@ class Student{
         //return Student::$id; //or
         return self::$id;
     }
-
-
 }
+class stu extends Student{
+    static function getAge(){
+        return self::AGE;
+    }
+}
+$m = new Student;
+echo $m->setName('huong');
+die;
 /**
  * self vs $this
  * self:

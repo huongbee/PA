@@ -15,12 +15,12 @@ class A{
         }
     }
 
-//     function getA($a){
-//         return $a;
-//     }
-//     function getA($a,$b){
-//         return [$a,$b];
-//     }
+    // function getA($a){
+    //     return $a;
+    // }
+    // function getA($a,$b){
+    //     return [$a,$b];
+    // }
 }
 
 $a = new A;
