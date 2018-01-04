@@ -1,6 +1,10 @@
 <?php
 class Pages{
     function index(){
-        echo 2;
+        echo 232;
+    }
+    
+    function getAll(){
+        echo 'all';
     }
 }
