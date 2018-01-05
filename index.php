@@ -1,7 +1,7 @@
 <?php
 $url =$_GET['url'];
-$url = rtrim($_GET['url'],'/')   ; // bỏ / cuối chuỗi
-//$url = filter_var($url, FILTER_SANITIZE_URL); //bỏ kí tự đặc biệt
+$url = rtrim($_GET['url'],'/');
+//$url = filter_var($url, FILTER_SANITIZE_URL);
 $url = explode('/',$url);
 unset($url[0]);  
 unset($url[1]);
