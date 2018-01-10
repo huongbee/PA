@@ -51,7 +51,23 @@ $sql = "DROP PROCEDURE IF EXISTS tinhTong;
         END";
 $sql = "Call tinhTong()";
 
+/**
+ * SP with Parameters
+ * 
+ */
+$sql = "CREATE PROCEDURE getFoodById(idFood INT(11))
+        BEGIN
+            SELECT * FROM foods WHERE id=idFood;
+        END";
+$sql = "Call getFoodById(12)";
 
+
+$sql = "CREATE PROCEDURE updateFood(idFood INT(11), newTitle VARCHAR(100))
+        BEGIN
+            UPDATE foods SET `name`=newTitle WHERE id=idFood;
+            SELECT * FROM foods WHERE id=idFood;
+        END";
+$sql = "Call updateFood(12, 'Canh chua ngao updated')";
 
 $stmt = $db->prepare($sql);
 $check = $stmt->execute();
