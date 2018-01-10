@@ -23,16 +23,35 @@ CALL GetAllProducts();
  */
 
 /* Update sp
-"DROP PROCEDURE IF EXISTS `GetAllProducts`$$
- 
+DROP PROCEDURE IF EXISTS `GetAllProducts`;
 CREATE PROCEDURE `GetAllFoodss`()
 BEGIN
-   SELECT *  FROM foods;
-END"
+    SELECT * FROM foods WHERE id<=9;
+END
 
 */
 
-$sql = "CALL GetAllProducts()";
+/**
+ * SP with variables
+ * Định nghĩa biến: DECLARE variable_name datatype(size) DEFAULT default_value
+ */
+$sql = "DROP PROCEDURE IF EXISTS tinhTong;
+        CREATE PROCEDURE tinhTong()
+        BEGIN
+            DECLARE a INT (11) DEFAULT 0;
+            DECLARE b INT (11) DEFAULT 0;
+            DECLARE tong INT (11) DEFAULT 0;
+            
+            SET a = 200;
+            SET b = 300;
+            SET tong = a + b;
+            
+            SELECT tong;
+            
+        END";
+$sql = "Call tinhTong()";
+
+
 
 $stmt = $db->prepare($sql);
 $check = $stmt->execute();
