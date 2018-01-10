@@ -1,6 +1,5 @@
 <?php
 
-
 // class UserFactory
 // {
 //     public static function Instance()
@@ -40,45 +39,44 @@
 //             echo "Created"   ; 
 //         }
 //         return self::$a;
-//     } 
+//     }
 // }
 
 // $a = new A; //Recent create
-// $a = new A; //Created
+// $b = new A; //Created
 // $c = new A; //Created
 
 
 
-class A{
+// class A{
 
+//     private static $class;
 
-    private static $class;
+//     private function __construct(){
+//         echo "class ".__METHOD__.' vua khoi tao'; //get_class()
+//     }
+//     static function getName(){
+//         if(!self::$class){
+//             echo "Vua setup";
+//             self::$class = new A;
 
-    private function __construct(){
-        echo "class ".__METHOD__.' vua khoi tao'; //get_class()
-    }
-    static function getName(){
-        if(!self::$class){
-            echo "Vua setup";
-            self::$class = new A;
+//         }
+//         else{
+//             echo "da setup";
+//         }
+//         return self::$class;
+//     }
+// }
 
-        }
-        else{
-            echo "da setup";
-        }
-        return self::$class;
-    }
-}
+// $a = A::getName();
+// $a->name = "Huong";
+// echo $a->name;
 
-$a = A::getName();
-$a->name = "Huong";
-echo $a->name;
+// unset($a);
 
-unset($a);
+// //var_dump($a);
 
-//var_dump($a);
-
-$b = A::getName();
-echo $b->name;
+// $b = A::getName();
+// echo $b->name;
 
 ?>
