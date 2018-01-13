@@ -1,4 +1,5 @@
 <?php
+//SP : giống như 1 function trong MySQL
 try{
     $db = new PDO('mysql:host=localhost;dbname=php2509_banhang2', 'root', '');
     $db->exec("SET NAMES UTF8");
